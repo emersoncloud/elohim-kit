@@ -1,6 +1,5 @@
 <script lang="ts">
     import Header from '$lib/Header.svelte';
-    import SaveState from "$lib/SaveState.svelte";
     import Players from '$lib/Players.svelte';
     import CreatePlayer from "$lib/CreatePlayer.svelte";
     import Teams from '$lib/Teams.svelte'
@@ -11,7 +10,6 @@
     <Header/>
     <div class='motherload'>
         <div class='daughterload'>
-            <SaveState />
             <HowTo />
             <CreatePlayer />
             <Players />

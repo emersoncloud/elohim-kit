@@ -2,7 +2,7 @@
     import { playerList, team1, team2 } from "./stores.ts";
     import { post_match } from "$lib/api.js";
 
-    let savedMatchLabel = "test";
+    let savedMatchLabel = "";
 
     function saveMatch() {
         post_match($playerList, $team1, $team2).then(data => {
@@ -15,14 +15,11 @@
 
 <div class="state">
     <div class="save-match">
-        <button on:click={saveMatch}>
-            Save Match
-        </button>
+        <input class="save" type="image" src="save.png" alt="delete" on:click={saveMatch}/>
         {#if savedMatchLabel}
-            <span class="saved-match-label">
-                <a class="link" href="https://elo.emersoncloud.net/{savedMatchLabel}">elo.emersoncloud.net/{savedMatchLabel}
-                </a>
-            </span>
+            <a class="link" target="_blank" rel="noopener noreferrer" href="https://elo.emersoncloud.net/{savedMatchLabel}">
+                elo.emersoncloud.net/{savedMatchLabel}
+            </a>
         {/if}
     </div>
 </div>
@@ -33,12 +30,20 @@
         justify-content: space-around;
     }
 
-    .saved-match-label {
-        color: white;
-    }
-
     .link {
         color: white;
         text-decoration: underline;
+        font-size: 1.1em;
+    }
+
+    .save-match {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .save {
+        border: none;
+        height: 50px;
     }
 </style>

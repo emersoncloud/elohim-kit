@@ -2,6 +2,7 @@
   import Team from './Team.svelte';
   import {team1, team2, playerList} from './stores.ts';
   import elohim from './elohim';
+  import SaveState from "$lib/SaveState.svelte";
 
   let newPlayerList = [];
 
@@ -95,6 +96,7 @@
 <div class="button-container-container">
   <input class="delete" type="image" src="clear.png" alt="delete" on:click={deleteSelectedPlayers}/>
 
+  <SaveState/>
   <div class="button-container">
     <input class="randomize" type="image" src="Randomize.png" alt='randomize' on:click={randomize}/>
     <input class="scale" type="image" src="Balance.png" alt='auto-balance' on:click={auto}/>
