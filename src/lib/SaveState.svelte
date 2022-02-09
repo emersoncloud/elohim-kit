@@ -2,7 +2,7 @@
     import { playerList, team1, team2 } from "./stores.ts";
     import { post_match } from "$lib/api.js";
 
-    let savedMatchLabel = "";
+    let savedMatchLabel = "test";
 
     function saveMatch() {
         post_match($playerList, $team1, $team2).then(data => {
@@ -15,12 +15,15 @@
 
 <div class="state">
     <div class="save-match">
-        {#if savedMatchLabel}
-            <span class="saved-match-label">{savedMatchLabel}</span>
-        {/if}
         <button on:click={saveMatch}>
-            save match
+            Save Match
         </button>
+        {#if savedMatchLabel}
+            <span class="saved-match-label">
+                <a class="link" href="https://elo.emersoncloud.net/{savedMatchLabel}">elo.emersoncloud.net/{savedMatchLabel}
+                </a>
+            </span>
+        {/if}
     </div>
 </div>
 
@@ -32,5 +35,10 @@
 
     .saved-match-label {
         color: white;
+    }
+
+    .link {
+        color: white;
+        text-decoration: underline;
     }
 </style>
